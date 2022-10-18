@@ -6,7 +6,7 @@ Clone this repo with
 
 > `cd` to your preferred directory
 >
-> Run `git clone https://github.com/dsc-project-mr/mr-fe-external.git` if you are using Git HTTPS i.e., Cloning from CLI of your choice.
+> Run `git clone https://github.com/dsc-project-mr/mr-external-fe.git` if you are using Git HTTPS i.e., Cloning from CLI of your choice.
 
 Ensure you have these installed. I included the version I am currently using but whichever version you are using if it works it should be fine:
 
