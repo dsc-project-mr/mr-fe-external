@@ -4,6 +4,8 @@ import { ReactNode } from 'react'
 import theme from 'styles/theme'
 import { ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
+import NavBar from 'components/NavBar'
+import Footer from 'components/Footer'
 
 type Props = {
   children: ReactNode
@@ -21,10 +23,13 @@ const Layout = ({ children }: Props) => {
       <ThemeProvider theme={theme}>
         <CssBaseline />
 
+        <NavBar/>
+
         <main className={styles.main}>
             {children}
         </main>
 
+        <Footer/>
       </ThemeProvider>
     </div>
   )
