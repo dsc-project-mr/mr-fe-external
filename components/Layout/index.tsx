@@ -18,15 +18,14 @@ const Layout = ({ children }: Props) => {
         <meta name="decription" content="Mercy Relief Portal" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
 
-      <main className={styles.main}>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          {children}
-        </ThemeProvider>
-      </main>
+        <main className={styles.main}>
+            {children}
+        </main>
 
-      <footer className={styles.footer}>Footer</footer>
+      </ThemeProvider>
     </div>
   )
 }
