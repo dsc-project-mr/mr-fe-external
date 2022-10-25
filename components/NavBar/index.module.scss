@@ -1,1 +1,36 @@
 @import 'styles/mixins';
+
+.appbar {
+  background-color: #fff;
+  color: #222;
+}
+
+.searchbar {
+  margin: 0 2rem;
+  flex: 1;
+  border-radius: 0.4rem;
+  color: inherit;
+}
+
+.mainLink {
+  text-decoration: none;
+}
+
+.navLinks {
+  display: flex-inline;
+}
+
+.navLink {
+  margin: 0 1rem 0 0;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.donateLink {
+  border-width: 0.15rem;
+}
+
+.navLinkActive {
+  text-decoration: underline;
+  text-underline-offset: 0.4rem;
+}
