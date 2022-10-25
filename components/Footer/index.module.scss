@@ -1,0 +1,28 @@
+@import 'styles/mixins';
+
+.footer {
+  display: flex;
+  padding: 2rem 0;
+  background-color: #eee;
+  color: black;
+}
+
+.info {
+  flex: 1;
+}
+
+.detailsBox {
+  display: block;
+  margin-right: 4rem;
+}
+
+.details {
+  display: block;
+  margin-top: 1rem;
+}
+
+.detailsHeader {
+  display: block;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+}
