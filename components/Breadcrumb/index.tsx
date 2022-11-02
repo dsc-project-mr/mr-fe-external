@@ -3,7 +3,7 @@ import Box from '@mui/material/Box'
 import { CSSProperties } from '@mui/styled-engine'
 import { ReactNode } from 'react'
 
-type BreadcrumbProps = TabProps & { dividerWidth: string | undefined }
+type BreadcrumbProps = TabProps & { dividerWidth?: string }
 
 interface BreadcrumbInnerProps {
   label: ReactNode
