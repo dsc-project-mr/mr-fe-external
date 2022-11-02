@@ -14,7 +14,7 @@ interface IconProps extends IconRequiredProps, IconOptionalProps {}
 const defaultProps: IconOptionalProps = {
   width: 50,
   height: 50,
-  color: 'red',
+  color: 'black',
 }
 // Use the full props within the actual component
 export const MRIcon = (props: IconProps) => {
