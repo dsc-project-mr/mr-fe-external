@@ -26,6 +26,7 @@ const BreadcrumbInner = ({ label }: BreadcrumbInnerProps) => {
   )
 }
 
+/** @see {@link Breadcrumbs} */
 const Breadcrumb = ({ dividerWidth, label, ...props }: BreadcrumbProps) => {
   const marker: CSSProperties = {
     content: '" "',
