@@ -5,11 +5,20 @@
   color: #222;
 }
 
+.navFlex {
+  flex-wrap: wrap;
+}
+
 .searchbar {
-  margin: 0 2rem;
   flex: 1;
+  display: flex;
+}
+
+.searchbarInput {
   border-radius: 0.4rem;
   color: inherit;
+  min-width: 40%;
+  margin: 0 0 0 auto;
 }
 
 .mainLink {
@@ -24,13 +33,25 @@
   margin: 0 1rem 0 0;
   text-transform: uppercase;
   text-decoration: none;
+  display: inline-flex;
+}
+
+.navLinkText {
+  font-weight: bold;
+  margin: auto 0;
 }
 
 .donateLink {
-  border-width: 0.15rem;
+  border-width: 0.2rem;
+  font-weight: bold;
+}
+
+.donateLink:hover {
+  border-width: 0.2rem;
 }
 
 .navLinkActive {
   text-decoration: underline;
   text-underline-offset: 0.4rem;
+  text-decoration-thickness: 0.15rem;
 }

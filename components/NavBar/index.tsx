@@ -7,6 +7,9 @@ import { useRouter } from 'next/router'
 import React, { useState, useEffect, ReactElement } from 'react'
 import FilledInput from '@mui/material/FilledInput'
 import Button from '@mui/material/Button'
+import Box from '@mui/system/Box'
+import MenuIcon from '@mui/icons-material/Menu'
+import IconButton from '@mui/material/IconButton'
 
 // NavLink adapted from https://github.com/vercel/next.js/blob/canary/examples/active-class-name/components/ActiveLink.tsx
 type NavLinkProps = LinkProps & { children: string | ReactElement }
@@ -54,7 +57,7 @@ const NavLink = ({ children, ...props }: NavLinkProps) => {
   return (
     <Link {...props}>
       <a className={className}>
-        <Typography variant="subtitle2" display="inline">
+        <Typography sx={{ paddingBottom: { xs: 1, md: 0 } }} variant="subtitle2" display="inline" className={styles.navLinkText}>
           {children}
         </Typography>
       </a>
@@ -64,20 +67,46 @@ const NavLink = ({ children, ...props }: NavLinkProps) => {
 
 const SearchBar = () => {
   return (
-    <FilledInput
-      hiddenLabel
-      disableUnderline
-      className={styles.searchbar}
-      size="small"
-      placeholder="Search"
-    />
+    <Box className={styles.searchbar} sx={{ margin: { xs: '0.6rem 0 0.6rem 2rem', md: '0.6rem 2rem' } }}>
+      <FilledInput
+        hiddenLabel
+        disableUnderline
+        size="small"
+        className={styles.searchbarInput}
+        placeholder="Search"
+      />
+    </Box>
   )
 }
 
+interface NavLinksProps {
+  children: ReactElement[];
+  show: boolean;
+}
+
+const NavLinks = ({children, show}: NavLinksProps) => {
+  return (
+    <Box sx={{
+        display: { xs: show ? 'flex' : 'none', md: 'flex' },
+        flexDirection: { xs: 'column', md: 'row' },
+        flex: { xs: 1, md: 'unset' },
+        marginBottom: { xs: 1, md: 'unset' }
+      }} className={styles.navLinks}>
+      {children}
+    </Box>
+  );
+}
+
 const NavBar = () => {
+  const [showNavLinks, setShowNavLinks] = useState(false);
+
   return (
     <AppBar position="relative" className={styles.appbar}>
-      <Toolbar>
+      <Toolbar className={styles.navFlex}>
+        <IconButton sx={{ display: { xs: 'flex', md: 'none'}}} onClick={ () => setShowNavLinks(!showNavLinks) }>
+          <MenuIcon sx={{ margin: 'auto' }}/>
+        </IconButton>
+
         <Link href="/">
           <a className={styles.mainLink}>
             <Typography variant="h6" color="inherit" noWrap>
@@ -85,8 +114,12 @@ const NavBar = () => {
             </Typography>
           </a>
         </Link>
+
         <SearchBar />
-        <div className={styles.navLinks}>
+
+        <Box sx={{flexBasis: { xs: '100%', md: 'unset'}}}></Box>
+
+        <NavLinks show={showNavLinks}>
           <NavLink href="/about-us">About Us</NavLink>
           <NavLink href="/impact">Impact</NavLink>
           <NavLink href="/events">Events & News</NavLink>
@@ -94,11 +127,10 @@ const NavBar = () => {
           <Button
             href="/donate"
             variant="outlined"
-            className={styles.donateLink}
-          >
+            className={styles.donateLink}>
             DONATE
           </Button>
-        </div>
+        </NavLinks>
       </Toolbar>
     </AppBar>
   )
