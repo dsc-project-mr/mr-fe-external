@@ -1,6 +1,5 @@
 import Link, { LinkProps } from 'next/link'
 import { ReactElement } from 'react'
-import styles from './index.module.scss'
 
 interface DetailsBoxProps {
   children: ReactElement[]
@@ -9,8 +8,8 @@ interface DetailsBoxProps {
 
 const DetailsBox = ({ children, header }: DetailsBoxProps) => {
   return (
-    <div className={styles.detailsBox}>
-      <span className={styles.detailsHeader}>{header}</span>
+    <div style={{ display: 'block', marginRight: '4rem' }}>
+      <span style={{ display: 'block', fontWeight: 'bold', borderBottom: '1px solid #ddd' }}>{header}</span>
       {children}
     </div>
   )
@@ -21,15 +20,17 @@ type DetailProps = LinkProps & { children: string | ReactElement }
 const Detail = ({ children, ...props }: DetailProps) => {
   return (
     <Link {...props}>
-      <a className={styles.detail}>{children}</a>
+      <a style={{ display: 'block', marginTop: '1rem', color: '#888' }}>{children}</a>
     </Link>
   )
 }
 
 const Footer = () => {
   return (
-    <footer className={styles.footer}>
-      <div className={styles.info}></div>
+    <footer style={{ display: 'flex', padding: '2rem 0', background: '#eee', color: '#333' }}>
+      {/* Info element/MR logo */}
+      <div style={{flex: 1}}></div>
+
       <DetailsBox header="Discover">
         <Detail href="/about-us">About Us</Detail>
         <Detail href="/our-commitment">Our Commitment</Detail>

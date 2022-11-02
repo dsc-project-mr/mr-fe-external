@@ -1,9 +1,9 @@
 import Head from 'next/head'
-import styles from './index.module.scss'
 import { ReactNode } from 'react'
 import theme from 'styles/theme'
 import { ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
+import Box from '@mui/material/Box'
 import NavBar from 'components/NavBar'
 import Footer from 'components/Footer'
 
@@ -13,7 +13,7 @@ type Props = {
 
 const Layout = ({ children }: Props) => {
   return (
-    <div className={styles.container}>
+    <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Head>
         <title>Mercy Relief Portal</title>
         <meta charSet="utf-8" />
@@ -25,11 +25,11 @@ const Layout = ({ children }: Props) => {
 
         <NavBar />
 
-        <main className={styles.main}>{children}</main>
+        <main style={{flex: 1}}>{children}</main>
 
         <Footer />
       </ThemeProvider>
-    </div>
+    </Box>
   )
 }
 
