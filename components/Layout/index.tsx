@@ -25,7 +25,7 @@ const Layout = ({ children }: Props) => {
 
         <NavBar />
 
-        <main style={{flex: 1}}>{children}</main>
+        <main style={{ flex: 1 }}>{children}</main>
 
         <Footer />
       </ThemeProvider>

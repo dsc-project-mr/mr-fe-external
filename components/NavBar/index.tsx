@@ -16,18 +16,18 @@ type NavLinkProps = LinkProps & { children: string | ReactElement }
 const navLinkActiveStyle: CSSProperties = {
   textDecoration: 'underline',
   textUnderlineOffset: '0.4rem',
-  textDecorationThickness: '0.15rem'
-};
+  textDecorationThickness: '0.15rem',
+}
 const navLinkStyle: CSSProperties = {
   margin: '0 1rem 0 0',
   textTransform: 'uppercase',
   textDecoration: 'none',
-  display: 'inline-flex'
-};
+  display: 'inline-flex',
+}
 
 const NavLink = ({ children, ...props }: NavLinkProps) => {
   const { asPath, isReady } = useRouter()
-  
+
   const [style, setStyle] = useState<CSSProperties>(navLinkStyle)
 
   useEffect(() => {
@@ -45,21 +45,14 @@ const NavLink = ({ children, ...props }: NavLinkProps) => {
 
       const newStyle =
         linkPathname === activePathname
-          ? {...navLinkStyle, ...navLinkActiveStyle}
+          ? { ...navLinkStyle, ...navLinkActiveStyle }
           : navLinkStyle
 
       if (newStyle !== style) {
         setStyle(newStyle)
       }
     }
-  }, [
-    asPath,
-    isReady,
-    props.as,
-    props.href,
-    setStyle,
-    style,
-  ])
+  }, [asPath, isReady, props.as, props.href, setStyle, style])
 
   return (
     <Link {...props}>
@@ -68,7 +61,8 @@ const NavLink = ({ children, ...props }: NavLinkProps) => {
           sx={{ margin: 'auto 0', paddingBottom: { xs: 1, md: 0 } }}
           variant="subtitle2"
           display="inline"
-          fontWeight='bold'>
+          fontWeight="bold"
+        >
           {children}
         </Typography>
       </a>
@@ -78,11 +72,13 @@ const NavLink = ({ children, ...props }: NavLinkProps) => {
 
 const SearchBar = () => {
   return (
-    <Box sx={{
-      flex: 1,
-      display: 'flex',
-      margin: { xs: '0.6rem 0 0.6rem 2rem', md: '0.6rem 2rem' }
-    }}>
+    <Box
+      sx={{
+        flex: 1,
+        display: 'flex',
+        margin: { xs: '0.6rem 0 0.6rem 2rem', md: '0.6rem 2rem' },
+      }}
+    >
       <FilledInput
         hiddenLabel
         disableUnderline
@@ -91,7 +87,7 @@ const SearchBar = () => {
           borderRadius: '0.4rem',
           color: 'inherit',
           minWidth: '40%',
-          margin: '0 0 0 auto'
+          margin: '0 0 0 auto',
         }}
         placeholder="Search"
       />
@@ -100,36 +96,41 @@ const SearchBar = () => {
 }
 
 interface NavLinksProps {
-  children: ReactElement[];
-  show: boolean;
+  children: ReactElement[]
+  show: boolean
 }
 
-const NavLinks = ({children, show}: NavLinksProps) => {
+const NavLinks = ({ children, show }: NavLinksProps) => {
   return (
-    <Box sx={{
+    <Box
+      sx={{
         display: { xs: show ? 'flex' : 'none', md: 'flex' },
         flexDirection: { xs: 'column', md: 'row' },
         flex: { xs: 1, md: 'unset' },
-        marginBottom: { xs: 1, md: 'unset' }
-      }}>
+        marginBottom: { xs: 1, md: 'unset' },
+      }}
+    >
       {children}
     </Box>
-  );
+  )
 }
 
 const NavBar = () => {
-  const [showNavLinks, setShowNavLinks] = useState(false);
-  const buttonBorderWidth = '0.2rem';
+  const [showNavLinks, setShowNavLinks] = useState(false)
+  const buttonBorderWidth = '0.2rem'
 
   return (
     <AppBar position="relative" sx={{ backgroundColor: '#fff', color: '#222' }}>
       <Toolbar sx={{ flexWrap: 'wrap' }}>
-        <IconButton sx={{ display: { xs: 'flex', md: 'none'}}} onClick={ () => setShowNavLinks(!showNavLinks) }>
-          <MenuIcon sx={{ margin: 'auto' }}/>
+        <IconButton
+          sx={{ display: { xs: 'flex', md: 'none' } }}
+          onClick={() => setShowNavLinks(!showNavLinks)}
+        >
+          <MenuIcon sx={{ margin: 'auto' }} />
         </IconButton>
 
         <Link href="/">
-          <a style={{textDecoration: 'none'}}>
+          <a style={{ textDecoration: 'none' }}>
             <Typography variant="h6" color="inherit" noWrap>
               Mercy Relief
             </Typography>
@@ -138,7 +139,7 @@ const NavBar = () => {
 
         <SearchBar />
 
-        <Box sx={{flexBasis: { xs: '100%', md: 'unset'}}}></Box>
+        <Box sx={{ flexBasis: { xs: '100%', md: 'unset' } }}></Box>
 
         <NavLinks show={showNavLinks}>
           <NavLink href="/about-us">About Us</NavLink>
@@ -152,9 +153,10 @@ const NavBar = () => {
               borderWidth: buttonBorderWidth,
               fontWeight: 'bold',
               '&:hover': {
-                borderWidth: buttonBorderWidth
-              }
-            }}>
+                borderWidth: buttonBorderWidth,
+              },
+            }}
+          >
             DONATE
           </Button>
         </NavLinks>
