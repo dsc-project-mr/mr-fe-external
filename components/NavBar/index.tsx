@@ -1,29 +1,22 @@
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Link, { LinkProps } from 'next/link';
+import AppBar from '@mui/material/AppBar'
+import Toolbar from '@mui/material/Toolbar'
+import Typography from '@mui/material/Typography'
+import Link, { LinkProps } from 'next/link'
 import styles from './index.module.scss'
-import { useRouter } from 'next/router';
-import React, { useState, useEffect, ReactElement, Children } from 'react';
-import FilledInput from '@mui/material/FilledInput';
-import { Button } from '@mui/material';
+import { useRouter } from 'next/router'
+import React, { useState, useEffect, ReactElement } from 'react'
+import FilledInput from '@mui/material/FilledInput'
+import Button from '@mui/material/Button'
 
-// ActiveLink adapted from https://github.com/vercel/next.js/blob/canary/examples/active-class-name/components/ActiveLink.tsx
-type ActiveLinkProps = LinkProps & {
-  children: ReactElement
-  activeClassName: string
-};
+// NavLink adapted from https://github.com/vercel/next.js/blob/canary/examples/active-class-name/components/ActiveLink.tsx
+type NavLinkProps = LinkProps & { children: string | ReactElement }
 
-const ActiveLink = ({
-  children,
-  activeClassName,
-  ...props
-}: ActiveLinkProps) => {
+const NavLink = ({ children, ...props }: NavLinkProps) => {
   const { asPath, isReady } = useRouter()
 
-  const child = Children.only(children)
-  const childClassName = child.props.className || ''
-  const [className, setClassName] = useState(childClassName)
+  const activeClassName = styles.navLinkActive!
+  const normalClassName = styles.navLink!
+  const [className, setClassName] = useState<string>(normalClassName)
 
   useEffect(() => {
     // Check if the router fields are updated client-side
@@ -40,8 +33,8 @@ const ActiveLink = ({
 
       const newClassName =
         linkPathname === activePathname
-          ? `${childClassName} ${activeClassName}`.trim()
-          : childClassName
+          ? `${normalClassName} ${activeClassName}`
+          : normalClassName
 
       if (newClassName !== className) {
         setClassName(newClassName)
@@ -52,7 +45,7 @@ const ActiveLink = ({
     isReady,
     props.as,
     props.href,
-    childClassName,
+    normalClassName,
     activeClassName,
     setClassName,
     className,
@@ -60,9 +53,11 @@ const ActiveLink = ({
 
   return (
     <Link {...props}>
-      {React.cloneElement(child, {
-        className: className || null,
-      })}
+      <a className={className}>
+        <Typography variant="subtitle2" display="inline">
+          {children}
+        </Typography>
+      </a>
     </Link>
   )
 }
@@ -74,16 +69,10 @@ const SearchBar = () => {
       disableUnderline
       className={styles.searchbar}
       size="small"
-      placeholder="Search"/>
+      placeholder="Search"
+    />
   )
 }
-
-const navLinks = [
-  { href: "/about-us", text: "About Us" },
-  { href: "/impact", text: "Impact" },
-  { href: "/events", text: "Events & News" },
-  { href: "/join", text: "Join" },
-];
 
 const NavBar = () => {
   return (
@@ -92,22 +81,23 @@ const NavBar = () => {
         <Link href="/">
           <a className={styles.mainLink}>
             <Typography variant="h6" color="inherit" noWrap>
-            Mercy Relief
+              Mercy Relief
             </Typography>
           </a>
         </Link>
-        <SearchBar/>
+        <SearchBar />
         <div className={styles.navLinks}>
-          {navLinks.map(link => (
-            <ActiveLink key={link.href} href={link.href} activeClassName={styles.navLinkActive!}>
-              <a className={styles.navLink}>
-                <Typography variant="subtitle2" display="inline">
-                  {link.text}
-                </Typography>
-              </a>
-            </ActiveLink>
-          ))}
-          <Button href='/donate' variant='outlined' className={styles.donateLink}>DONATE</Button>
+          <NavLink href="/about-us">About Us</NavLink>
+          <NavLink href="/impact">Impact</NavLink>
+          <NavLink href="/events">Events & News</NavLink>
+          <NavLink href="/join">Join</NavLink>
+          <Button
+            href="/donate"
+            variant="outlined"
+            className={styles.donateLink}
+          >
+            DONATE
+          </Button>
         </div>
       </Toolbar>
     </AppBar>

@@ -23,13 +23,11 @@ const Layout = ({ children }: Props) => {
       <ThemeProvider theme={theme}>
         <CssBaseline />
 
-        <NavBar/>
+        <NavBar />
 
-        <main className={styles.main}>
-            {children}
-        </main>
+        <main className={styles.main}>{children}</main>
 
-        <Footer/>
+        <Footer />
       </ThemeProvider>
     </div>
   )
