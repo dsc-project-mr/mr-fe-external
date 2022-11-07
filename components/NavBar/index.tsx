@@ -3,60 +3,61 @@ import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import Link, { LinkProps } from 'next/link'
 import { useRouter } from 'next/router'
-import React, { useState, useEffect, ReactElement, CSSProperties } from 'react'
-import FilledInput from '@mui/material/FilledInput'
+import React, { useState, useEffect, ReactNode } from 'react'
 import Button from '@mui/material/Button'
 import Box from '@mui/system/Box'
 import MenuIcon from '@mui/icons-material/Menu'
 import IconButton from '@mui/material/IconButton'
+import SearchBar from 'components/SearchBar'
+import { SxProps } from '@mui/material/styles'
 
 // NavLink adapted from https://github.com/vercel/next.js/blob/canary/examples/active-class-name/components/ActiveLink.tsx
-type NavLinkProps = LinkProps & { children: string | ReactElement }
+type NavLinkProps = LinkProps & { children: ReactNode }
 
-const navLinkActiveStyle: CSSProperties = {
+const navLinkUnderline: SxProps = {
   textDecoration: 'underline',
   textUnderlineOffset: '0.4rem',
   textDecorationThickness: '0.15rem',
 }
-const navLinkStyle: CSSProperties = {
+
+const navLinkStyle: SxProps = {
   margin: '0 1rem 0 0',
   textTransform: 'uppercase',
   textDecoration: 'none',
   display: 'inline-flex',
+  '&:hover': navLinkUnderline,
+}
+
+const navLinkActiveStyle: SxProps = {
+  ...navLinkStyle,
+  ...navLinkUnderline,
+  color: 'primary.main',
 }
 
 const NavLink = ({ children, ...props }: NavLinkProps) => {
   const { asPath, isReady } = useRouter()
 
-  const [style, setStyle] = useState<CSSProperties>(navLinkStyle)
+  const [style, setStyle] = useState<SxProps>(navLinkStyle)
 
   useEffect(() => {
     // Check if the router fields are updated client-side
     if (isReady) {
-      // Dynamic route will be matched via props.as
       // Static route will be matched via props.href
-      const linkPathname = new URL(
-        (props.as || props.href) as string,
-        location.href
-      ).pathname
+      const linkPathname = new URL(props.href as string, location.href).pathname
 
       // Using URL().pathname to get rid of query and hash
       const activePathname = new URL(asPath, location.href).pathname
 
       const newStyle =
-        linkPathname === activePathname
-          ? { ...navLinkStyle, ...navLinkActiveStyle }
-          : navLinkStyle
+        linkPathname === activePathname ? navLinkActiveStyle : navLinkStyle
 
-      if (newStyle !== style) {
-        setStyle(newStyle)
-      }
+      setStyle(newStyle)
     }
   }, [asPath, isReady, props.as, props.href, setStyle, style])
 
   return (
-    <Link {...props}>
-      <a style={style}>
+    <Link {...props} passHref>
+      <Box sx={style} component="a">
         <Typography
           sx={{ margin: 'auto 0', paddingBottom: { xs: 1, md: 0 } }}
           variant="subtitle2"
@@ -65,12 +66,12 @@ const NavLink = ({ children, ...props }: NavLinkProps) => {
         >
           {children}
         </Typography>
-      </a>
+      </Box>
     </Link>
   )
 }
 
-const SearchBar = () => {
+const SearchBarWrapper = () => {
   return (
     <Box
       sx={{
@@ -79,24 +80,13 @@ const SearchBar = () => {
         margin: { xs: '0.6rem 0 0.6rem 2rem', md: '0.6rem 2rem' },
       }}
     >
-      <FilledInput
-        hiddenLabel
-        disableUnderline
-        size="small"
-        sx={{
-          borderRadius: '0.4rem',
-          color: 'inherit',
-          minWidth: '40%',
-          margin: '0 0 0 auto',
-        }}
-        placeholder="Search"
-      />
+      <SearchBar />
     </Box>
   )
 }
 
 interface NavLinksProps {
-  children: ReactElement[]
+  children: ReactNode
   show: boolean
 }
 
@@ -115,9 +105,10 @@ const NavLinks = ({ children, show }: NavLinksProps) => {
   )
 }
 
+const BUTTON_BORDER_WIDTH = '0.2rem'
+
 const NavBar = () => {
   const [showNavLinks, setShowNavLinks] = useState(false)
-  const buttonBorderWidth = '0.2rem'
 
   return (
     <AppBar position="relative" sx={{ backgroundColor: '#fff', color: '#222' }}>
@@ -137,9 +128,10 @@ const NavBar = () => {
           </a>
         </Link>
 
-        <SearchBar />
+        <SearchBarWrapper />
 
-        <Box sx={{ flexBasis: { xs: '100%', md: 'unset' } }}></Box>
+        {/* Push NavLinks to next row at the md breakpoint */}
+        <Box sx={{ flexBasis: { xs: '100%', md: 'unset' } }} />
 
         <NavLinks show={showNavLinks}>
           <NavLink href="/about-us">About Us</NavLink>
@@ -150,10 +142,10 @@ const NavBar = () => {
             href="/donate"
             variant="outlined"
             sx={{
-              borderWidth: buttonBorderWidth,
+              borderWidth: BUTTON_BORDER_WIDTH,
               fontWeight: 'bold',
               '&:hover': {
-                borderWidth: buttonBorderWidth,
+                borderWidth: BUTTON_BORDER_WIDTH,
               },
             }}
           >
