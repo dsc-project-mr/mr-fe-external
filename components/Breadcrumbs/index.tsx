@@ -1,7 +1,5 @@
 import Tabs, { TabsProps } from '@mui/material/Tabs'
 
-type BreadcrumbsProps = TabsProps
-
 /**
  * `Breadcrumbs`/`Breadcrumb` element, similar to `Tabs`/`Tab` element. Usage is based on the
  * [MUI Tabs](https://mui.com/material-ui/react-tabs/#basic-tabs) example.
@@ -21,17 +19,17 @@ type BreadcrumbsProps = TabsProps
  *           <Breadcrumb label="Submit" />
  *         </Breadcrumbs>
  *       </Box>
- *       <div hidden={value != 0}>Item One</div>
- *       <div hidden={value != 1}>Item Two</div>
- *       <div hidden={value != 2}>Item Three</div>
- *       <div hidden={value != 3}>Item Four</div>
- *       <div hidden={value != 4}>Item Five</div>
+ *       <div hidden={value !== 0}>Item One</div>
+ *       <div hidden={value !== 1}>Item Two</div>
+ *       <div hidden={value !== 2}>Item Three</div>
+ *       <div hidden={value !== 3}>Item Four</div>
+ *       <div hidden={value !== 4}>Item Five</div>
  *     </div>
  *   )
  * }
  * ```
  */
-const Breadcrumbs = (props: BreadcrumbsProps) => {
+const Breadcrumbs = (props: TabsProps) => {
   return (
     <Tabs
       {...props}

@@ -21,7 +21,31 @@ const BreadcrumbInner = ({ label }: BreadcrumbInnerProps) => {
           borderRadius: '50%',
         }}
       />
-      <span style={{ textTransform: 'none' }}>{label}</span>
+      {/* Here we use some CSS Tricks to avoid layout size changing when making the text bold */}
+      {/* ref: https://css-tricks.com/bold-on-hover-without-the-layout-shift/ */}
+      <Box
+        data-text={label}
+        sx={{
+          textTransform: 'none',
+          display: 'inline-flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          textDecoration: 'none',
+
+          '&::after': {
+            content: 'attr(data-text) / ""',
+            height: 0,
+            visibility: 'hidden',
+            overflow: 'hidden',
+            userSelect: 'none',
+            pointerEvents: 'none',
+            fontWeight: 'bold',
+          },
+        }}
+      >
+        {label}
+      </Box>
     </div>
   )
 }
@@ -48,7 +72,7 @@ const Breadcrumb = ({ dividerWidth, label, ...props }: BreadcrumbProps) => {
         '&:not(:last-child)::after': marker,
       }}
     >
-      <Tab {...props} label={inner} sx={{ padding: 0 }} />
+      <Tab {...props} label={inner} sx={{ padding: '0.2rem' }} />
     </Box>
   )
 }
