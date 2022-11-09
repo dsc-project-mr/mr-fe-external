@@ -53,7 +53,7 @@ const NavLink = ({ children, ...props }: NavLinkProps) => {
 
       setStyle(newStyle)
     }
-  }, [asPath, isReady, props.as, props.href, setStyle, style])
+  }, [asPath, isReady, props.href])
 
   return (
     <Link {...props} passHref>
