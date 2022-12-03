@@ -6,6 +6,7 @@ import CssBaseline from '@mui/material/CssBaseline'
 import Box from '@mui/material/Box'
 import NavBar from 'components/NavBar'
 import Footer from 'components/Footer'
+import BasicCard from 'components/BasicCard'
 
 type Props = {
   children: ReactNode
@@ -27,6 +28,7 @@ const Layout = ({ children }: Props) => {
 
         <main style={{ flex: 1 }}>{children}</main>
 
+        <BasicCard />
         <Footer />
       </ThemeProvider>
     </Box>
