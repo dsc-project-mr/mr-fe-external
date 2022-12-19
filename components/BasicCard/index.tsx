@@ -29,15 +29,8 @@ const BasicCard = () => {
         alignItems: "center",
       }}>
         <CardMedia title="Fundraise Image">
-          <Image src="/test.jpeg" height="114" width="114" alt="" />
+          <Image src="/test.jpeg" height="114" width="114" alt="fundraise-img" />
         </CardMedia>
-        {/* <CardMedia
-            alt="fundraise-img"
-            component="img"
-            title="Fundraise Image"
-            height="140"
-            image='/test.jpeg'
-        /> */}
         <Typography variant="h5" gutterBottom>
           FUNDRAISE FOR US
         </Typography>
