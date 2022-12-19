@@ -7,38 +7,26 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Image from 'next/image';
 
-const BasicCard = () => {
+interface Props {
+  cardTitle: string;
+  cardContent: string;
+  cardImage: string;
+  buttonName: string;
+}
+
+
+const BasicCard = ({ cardTitle, cardContent, cardImage, buttonName }: Props) => {
   return (
-    <Card sx = {{ 
-      maxWidth: 500, 
-      maxHeight: 500, 
-      background: "#FFFFFF",
-      boxShadow: "0px 0px 0px 1px #E0E0E0",
-      borderRadius: "25px",
-      display:'flex',
-      flexDirection:"column",
-      justifyContent:"center",
-      alignItems: "center",
-      margin: 10
-      }}>
-      <CardContent
-      sx={{ 
-        display:'flex',
-        flexDirection:"column",
-        justifyContent:"center",
-        alignItems: "center",
-      }}>
-        <CardMedia title="Fundraise Image">
-          <Image src="/test.jpeg" height="114" width="114" alt="fundraise-img" />
+    <Card sx={styledCard}>
+      <CardContent sx={styledCardContent}>
+        <CardMedia title={cardTitle}>
+          <Image src={cardImage} height="114" width="114" alt="fundraise-img" />
         </CardMedia>
         <Typography variant="h5" gutterBottom>
-          FUNDRAISE FOR US
+          {cardTitle}
         </Typography>
         <Typography variant="body2">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus voluptas harum, porro molestiae numquam a
-          nimi a vero neque corrupti ipsam dolorem id iure aperiam fugit necessitatibus soluta corporis doloremque tenetur.
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus voluptas harum, porro molestiae numquam a
-          nimi a vero neque corrupti ipsam dolorem id iure aperiam fugit necessitatibus soluta corporis doloremque tenetur.
+          {cardContent}
         </Typography>
       </CardContent>
       <CardActions>
@@ -48,10 +36,8 @@ const BasicCard = () => {
         onClick={() => {
           alert('clicked')
         }}
-        sx={{
-          marginBottom: "10px"
-        }}>
-          SPONSOR NOW
+        sx={{marginBottom: "10px"}}>
+          {buttonName}
         </Button>
       </CardActions>
     </Card>
@@ -59,3 +45,24 @@ const BasicCard = () => {
 }
 
 export default BasicCard;
+
+const styledCard = {
+  maxWidth: 500, 
+  maxHeight: 500, 
+  background: "#FFFFFF",
+  boxShadow: "0px 0px 0px 1px #E0E0E0",
+  borderRadius: "25px",
+  display:'flex',
+  flexDirection:"column",
+  justifyContent:"center",
+  alignItems: "center",
+  margin: 10
+}
+
+const styledCardContent = {
+  display:'flex',
+  flexDirection:"column",
+  justifyContent:"center",
+  alignItems: "center",
+}
+

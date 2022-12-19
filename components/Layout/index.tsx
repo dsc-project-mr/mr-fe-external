@@ -28,7 +28,7 @@ const Layout = ({ children }: Props) => {
 
         <main style={{ flex: 1 }}>{children}</main>
 
-        <BasicCard />
+        <BasicCard cardTitle="FUNDRAISE FOR US" cardContent={word} cardImage="/test.jpeg" buttonName="Sponsor Now"/>
         <Footer />
       </ThemeProvider>
     </Box>
@@ -36,3 +36,6 @@ const Layout = ({ children }: Props) => {
 }
 
 export default Layout
+
+const word = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores omnis sapiente libero ipsum voluptates tempore quibusdam consequuntur mollitia dolorum maxime eius reiciendis odit assumenda voluptatibus commodi, suscipit sed dolorem autem.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores omnis sapiente libero ipsum voluptates tempore quibusdam consequuntur mollitia dolorum maxime eius reiciendis odit assumenda voluptatibus commodi, suscipit sed dolorem autem"
+
