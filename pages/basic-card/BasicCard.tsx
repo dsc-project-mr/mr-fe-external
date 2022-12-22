@@ -14,13 +14,12 @@ interface Props {
   buttonName: string;
 }
 
-
 const BasicCard = ({ cardTitle, cardContent, cardImage, buttonName }: Props) => {
   return (
     <Card sx={styledCard}>
       <CardContent sx={styledCardContent}>
         <CardMedia title={cardTitle}>
-          <Image src={cardImage} height="114" width="114" alt="fundraise-img" />
+          <Image src={cardImage} height="114" width="114" alt="" />
         </CardMedia>
         <Typography variant="h5" gutterBottom>
           {cardTitle}
