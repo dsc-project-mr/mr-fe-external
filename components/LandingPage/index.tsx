@@ -14,12 +14,14 @@ const LandingPage = () => {
             '&:after': {
               content: '""',
               position: 'absolute',
-              height: '80px',
-              left: '-2%',
-              right: '-2%',
+              height: '200px',
+              width: '100%',
+              left: '50%',
+              transform: 'translate(-50%, 50%)',
               borderRadius: '50%',
-              bottom: '-30px',
+              bottom: '0%',
               background: '#fff',
+              zIndex: 1,
             },
           }}
         >
@@ -29,6 +31,18 @@ const LandingPage = () => {
             src="/images/landing/landing_main_img.png"
             sx={{
               opacity: 0.5,
+            }}
+          />
+          <div
+            style={{
+              zIndex: 2,
+              position: 'absolute',
+              left: '50%',
+              bottom: '0%',
+              height: '100px',
+              width: '3px',
+              backgroundColor: '#1976D2',
+              transform: 'translate(-50%, 50%)',
             }}
           />
         </Box>
