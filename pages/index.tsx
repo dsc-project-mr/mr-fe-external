@@ -1,9 +1,10 @@
+import CampaignSegment from 'components/CampaignSegment'
 import type { NextPage } from 'next'
 
 const Home: NextPage = () => {
   return (
     <div>
-      <h1>Mercy Relief Portal</h1>
+      <CampaignSegment />
     </div>
   )
 }
