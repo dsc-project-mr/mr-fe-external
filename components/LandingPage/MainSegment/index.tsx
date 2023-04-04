@@ -1,5 +1,5 @@
 import { Box, Grid, Typography } from '@mui/material'
-import StatsPanel from './StatsPanel'
+import StatsPanel, { CardIcon } from './StatsPanel'
 import Line from './Line'
 
 const MainSegment = () => {
@@ -66,9 +66,21 @@ const MainSegment = () => {
             indomitable spirit, and are committed to supporting it.
           </Typography>
           <Box width="70%" display="flex" justifyContent="space-between">
-            <StatsPanel />
-            <StatsPanel />
-            <StatsPanel />
+            <StatsPanel
+              title="Statistic 1"
+              desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+              cardIcon={CardIcon.PERSON}
+            />
+            <StatsPanel
+              title="Statistic 2"
+              desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+              cardIcon={CardIcon.LOCATION}
+            />
+            <StatsPanel
+              title="Statistic 3"
+              desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+              cardIcon={CardIcon.HEART}
+            />
           </Box>
         </Box>
       </Grid>

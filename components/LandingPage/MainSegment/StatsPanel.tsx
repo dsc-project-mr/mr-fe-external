@@ -1,6 +1,18 @@
 import { Box, Typography } from '@mui/material'
 
-const StatsPanel = () => {
+interface Props {
+  title: string
+  desc: string
+  cardIcon: CardIcon
+}
+
+export enum CardIcon {
+  PERSON = 'person',
+  LOCATION = 'location',
+  HEART = 'heart',
+}
+
+const StatsPanel = ({ title, desc, cardIcon }: Props) => {
   return (
     <Box
       sx={{
@@ -13,7 +25,7 @@ const StatsPanel = () => {
       <Box width={70}>
         <Box
           component="img"
-          src="/images/landing/statistics/person.png"
+          src={`/images/landing/statistics/${cardIcon}.png`}
           height="30px"
         />
       </Box>
@@ -24,10 +36,8 @@ const StatsPanel = () => {
           width: '170px',
         }}
       >
-        <Typography fontSize={18}>Statistics 1</Typography>
-        <Typography fontSize={14}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit
-        </Typography>
+        <Typography fontSize={18}>{title}</Typography>
+        <Typography fontSize={14}>{desc}</Typography>
       </Box>
     </Box>
   )
