@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Box, Typography } from '@mui/material'
 
 interface Props {
