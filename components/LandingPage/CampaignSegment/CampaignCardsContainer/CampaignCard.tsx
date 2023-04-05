@@ -60,8 +60,7 @@ const styledCard = {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-
-  margin: 10,
+  margin: 1,
 }
 
 const styledCardContent = {
