@@ -6,7 +6,7 @@ const FeaturedCampaignsContainer = () => {
   return (
     <Box
       sx={{
-        backgroundImage: 'url(/campaign_background.png)',
+        backgroundImage: 'url(/images/landing/campaign_background.png)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         width: '100%',
