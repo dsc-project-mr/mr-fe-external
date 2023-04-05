@@ -4,7 +4,6 @@ import Typography from '@mui/material/Typography'
 import Link, { LinkProps } from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useState, useEffect, ReactNode } from 'react'
-import Button from '@mui/material/Button'
 import Box from '@mui/system/Box'
 import MenuIcon from '@mui/icons-material/Menu'
 import IconButton from '@mui/material/IconButton'
@@ -21,6 +20,7 @@ const navLinkUnderline: SxProps = {
 }
 
 const navLinkStyle: SxProps = {
+  color: '#00000099',
   margin: '0 1rem 0 0',
   textTransform: 'uppercase',
   textDecoration: 'none',
@@ -105,8 +105,6 @@ const NavLinks = ({ children, show }: NavLinksProps) => {
   )
 }
 
-const BUTTON_BORDER_WIDTH = '0.2rem'
-
 const NavBar = () => {
   const [showNavLinks, setShowNavLinks] = useState(false)
 
@@ -122,7 +120,7 @@ const NavBar = () => {
 
         <Link href="/">
           <a style={{ textDecoration: 'none' }}>
-            <Typography variant="h6" color="inherit" noWrap>
+            <Typography variant="h6" color="black" noWrap>
               Mercy Relief
             </Typography>
           </a>
@@ -136,21 +134,9 @@ const NavBar = () => {
         <NavLinks show={showNavLinks}>
           <NavLink href="/about-us">About Us</NavLink>
           <NavLink href="/impact">Impact</NavLink>
-          <NavLink href="/events">Events & News</NavLink>
+          <NavLink href="/events-news">Events & News</NavLink>
           <NavLink href="/join">Join</NavLink>
-          <Button
-            href="/donate"
-            variant="outlined"
-            sx={{
-              borderWidth: BUTTON_BORDER_WIDTH,
-              fontWeight: 'bold',
-              '&:hover': {
-                borderWidth: BUTTON_BORDER_WIDTH,
-              },
-            }}
-          >
-            DONATE
-          </Button>
+          <NavLink href="/donate">Donate</NavLink>
         </NavLinks>
       </Toolbar>
     </AppBar>
