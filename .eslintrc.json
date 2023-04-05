@@ -1,3 +1,13 @@
 {
-  "extends": ["next/core-web-vitals", "eslint:recommended"]
+  "extends": ["next/core-web-vitals", "eslint:recommended"],
+  "globals": {
+    "React": true,
+    "mount": true,
+    "mountWithRouter": true,
+    "shallow": true,
+    "shallowWithRouter": true,
+    "context": true,
+    "expect": true,
+    "JSX": true
+  }
 }
