@@ -1,12 +1,8 @@
-import CampaignSegment from 'components/CampaignSegment'
+import LandingPage from 'components/LandingPage'
 import type { NextPage } from 'next'
 
 const Home: NextPage = () => {
-  return (
-    <div>
-      <CampaignSegment />
-    </div>
-  )
+  return <LandingPage />
 }
 
 export default Home
