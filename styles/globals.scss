@@ -24,3 +24,10 @@ a {
 * {
   box-sizing: border-box;
 }
+
+@font-face {
+  font-family: Pacifico;
+  src: url('../assets/font/Pacifico-Light.ttf');
+  font-weight: 300;
+  font-style: normal;
+}

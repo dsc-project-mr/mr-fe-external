@@ -43,6 +43,7 @@ const Footer = () => {
         padding: '2rem 0',
         background: '#eee',
         color: '#333',
+        bottom: '0px',
       }}
     >
       {/* Info element/MR logo */}

@@ -2,15 +2,13 @@ import Head from 'next/head'
 import { ReactNode } from 'react'
 import theme from 'styles/theme'
 import { ThemeProvider } from '@mui/material/styles'
-import CssBaseline from '@mui/material/CssBaseline'
-import Box from '@mui/material/Box'
-import NavBar from 'components/NavBar'
-import Footer from 'components/Footer'
 
+import Footer from 'components/Footer'
+import { Box, CssBaseline } from '@mui/material'
+import NavBar from 'components/NavBar'
 type Props = {
   children: ReactNode
 }
-
 const Layout = ({ children }: Props) => {
   return (
     <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
