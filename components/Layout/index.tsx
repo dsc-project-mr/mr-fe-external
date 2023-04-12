@@ -19,10 +19,6 @@ const Layout = ({ children }: Props) => {
         <meta charSet="utf-8" />
         <meta name="decription" content="Mercy Relief Portal" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-        />
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
