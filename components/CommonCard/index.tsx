@@ -8,30 +8,23 @@ import Chip from '@mui/material/Chip'
 
 const styledCard = {
   width: '400px',
-  height: '500px',
   background: '#FFFFFF',
   boxShadow: '0px 0px 0px 1px #E0E0E0',
   borderRadius: '25px',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  margin: 1,
-}
-
-const styledCardContent = {
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'space-evenly',
 }
 
 interface Props {
-  location: string
+  location?: string
   date: string
   title: string
   content: string
   imgSrc: string
   tags?: string[]
   actions?: JSX.Element
+  daysLeft?: number
 }
 
 const CommonCard = ({
@@ -42,34 +35,51 @@ const CommonCard = ({
   imgSrc,
   tags,
   actions,
+  daysLeft,
 }: Props) => {
   return (
     <Card sx={styledCard}>
       <CardMedia title={title}>
         <Box component="img" src={imgSrc} width="100%" alt="" />
       </CardMedia>
-      <CardContent sx={styledCardContent}>
+      <CardContent>
         <Typography fontWeight={500} fontSize={14} color="#1976D2">
-          {location} • {date}
+          {location ? `${location} • ${date}` : date}
         </Typography>
-        <Typography fontWeight={500} fontSize={20}>
+        <Typography fontWeight={500} fontSize={20} color="#000000DE">
           {title}
         </Typography>
         <Typography variant="body2">{content}</Typography>
-        <Box display="flex" gap="8px">
-          {tags?.map((tag) => (
-            <Chip
-              label={tag}
-              sx={{
-                backgroundColor: '#E8EAF6',
-                color: '#3F51B5',
-              }}
-              key={tag}
-            />
-          ))}
-        </Box>
+        {tags && tags.length && (
+          <Box display="flex" gap="8px" paddingTop={4}>
+            {tags.map((tag) => (
+              <Chip
+                label={tag}
+                sx={{
+                  backgroundColor: '#E8EAF6',
+                  color: '#3F51B5',
+                }}
+                key={tag}
+              />
+            ))}
+          </Box>
+        )}
+        {daysLeft !== undefined && (
+          <Typography
+            fontWeight={700}
+            fontSize={14}
+            align="right"
+            color="#C7043D"
+          >
+            {daysLeft} Days Left
+          </Typography>
+        )}
       </CardContent>
-      <CardActions>{actions}</CardActions>
+      {actions && (
+        <CardActions sx={{ width: '100%', padding: 0, height: '60px' }}>
+          {actions}
+        </CardActions>
+      )}
     </Card>
   )
 }
