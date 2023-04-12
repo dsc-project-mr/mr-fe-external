@@ -1,13 +1,23 @@
 {
-  "extends": ["next/core-web-vitals", "eslint:recommended"],
-  "globals": {
-    "React": true,
-    "mount": true,
-    "mountWithRouter": true,
-    "shallow": true,
-    "shallowWithRouter": true,
-    "context": true,
-    "expect": true,
-    "JSX": true
+  "extends": [
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "plugins": ["unused-imports"],
+  "rules": {
+    "no-unused-vars": "off",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "eqeqeq": 1
   }
 }
