@@ -1,4 +1,4 @@
-import { Box, Button, TextField, Typography } from '@mui/material'
+import { Box, Button, Divider, TextField, Typography } from '@mui/material'
 import YouTubeIcon from '@mui/icons-material/YouTube'
 import TwitterIcon from '@mui/icons-material/Twitter'
 import InstagramIcon from '@mui/icons-material/Instagram'
@@ -29,6 +29,16 @@ const InformedSegment = () => {
         justifyContent="space-evenly"
         alignItems="center"
       >
+        <Divider
+          variant="middle"
+          sx={{
+            width: '100px',
+            height: '5px',
+            backgroundColor: 'black',
+            borderRadius: '5px',
+          }}
+        />
+
         <Typography fontSize={28} fontWeight={700}>
           Subscribe to Stay Informed
         </Typography>
@@ -96,7 +106,12 @@ const InformedSegment = () => {
               endAdornment: (
                 <Button
                   variant="contained"
-                  sx={{ borderRadius: '25px', height: '100%' }}
+                  sx={{
+                    borderRadius: '25px',
+                    height: '100%',
+                    backgroundColor: '#1976D2',
+                    width: '150px',
+                  }}
                 >
                   Subscribe
                 </Button>
