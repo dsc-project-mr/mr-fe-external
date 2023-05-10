@@ -15,7 +15,7 @@ const InformedSegment = () => {
         backgroundImage: `url(${imgUrl})`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center center',
-        backgroundSize: 'cover',
+        backgroundSize: '100% 100%',
       }}
       display="flex"
       justifyContent="center"
@@ -88,6 +88,9 @@ const InformedSegment = () => {
               '& fieldset': {
                 borderRadius: '25px',
               },
+              '& .MuiInputBase-root': {
+                paddingRight: 0,
+              },
             }}
             InputProps={{
               endAdornment: (
@@ -101,28 +104,6 @@ const InformedSegment = () => {
             }}
           />
         </Box>
-        {/* <FormGroup
-          row
-          sx={{
-            width: '100%',
-          }}
-        >
-          <TextField
-            variant="outlined"
-            label="Email Address"
-            sx={{
-              '& fieldset': {
-                borderRadius: '25px',
-              },
-            }}
-          />
-          <Button
-            variant="contained"
-            sx={{ borderRadius: '25px', height: '100%' }}
-          >
-            Subscribe
-          </Button>
-        </FormGroup> */}
 
         <Box display="flex" gap={5}>
           <YouTubeIcon fontSize="large" />
