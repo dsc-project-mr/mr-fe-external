@@ -3,9 +3,33 @@ import YouTubeIcon from '@mui/icons-material/YouTube'
 import TwitterIcon from '@mui/icons-material/Twitter'
 import InstagramIcon from '@mui/icons-material/Instagram'
 import FacebookIcon from '@mui/icons-material/Facebook'
+import { ChangeEvent, useState } from 'react'
+
+interface FormValues {
+  first_name: string
+  last_name: string
+  age: number
+  gender: string
+  email: string
+}
 
 const InformedSegment = () => {
   const imgUrl = '/images/landing/informed_segment_bg.png'
+  const [formValues, setFormValues] = useState<FormValues | {}>({})
+
+  const handleTextFieldChange = (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = event.target
+    setFormValues({
+      ...formValues,
+      [name]: value,
+    })
+  }
+
+  const handleSubmit = () => {
+    console.log(formValues)
+  }
 
   return (
     <Box
@@ -49,8 +73,10 @@ const InformedSegment = () => {
         <Box display="flex" justifyContent="space-between" width="100%" gap={5}>
           <TextField
             id="outlined-search"
+            name="first_name"
             label="First Name"
             type="search"
+            onChange={handleTextFieldChange}
             sx={{
               '& fieldset': {
                 borderRadius: '25px',
@@ -59,8 +85,10 @@ const InformedSegment = () => {
           />
           <TextField
             id="outlined-search"
+            name="last_name"
             label="Last Name"
             type="search"
+            onChange={handleTextFieldChange}
             sx={{
               '& fieldset': {
                 borderRadius: '25px',
@@ -69,8 +97,10 @@ const InformedSegment = () => {
           />
           <TextField
             id="outlined-search"
+            name="age"
             label="Age"
             type="search"
+            onChange={handleTextFieldChange}
             sx={{
               '& fieldset': {
                 borderRadius: '25px',
@@ -79,8 +109,10 @@ const InformedSegment = () => {
           />
           <TextField
             id="outlined-search"
+            name="gender"
             label="Gender"
             type="search"
+            onChange={handleTextFieldChange}
             sx={{
               '& fieldset': {
                 borderRadius: '25px',
@@ -91,9 +123,11 @@ const InformedSegment = () => {
         <Box display="flex" width="100%">
           <TextField
             id="outlined-search"
+            name="email"
             label="Email Address"
             type="search"
             fullWidth
+            onChange={handleTextFieldChange}
             sx={{
               '& fieldset': {
                 borderRadius: '25px',
@@ -112,6 +146,7 @@ const InformedSegment = () => {
                     backgroundColor: '#1976D2',
                     width: '150px',
                   }}
+                  onClick={handleSubmit}
                 >
                   Subscribe
                 </Button>
