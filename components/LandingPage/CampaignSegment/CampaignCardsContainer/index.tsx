@@ -1,4 +1,4 @@
-import { Box, Button } from '@mui/material'
+import { Box, Button, Divider } from '@mui/material'
 import CommonCard from 'components/CommonCard'
 
 const CampaignCardsContainer = () => {
@@ -11,12 +11,21 @@ const CampaignCardsContainer = () => {
       paddingTop="70px"
       paddingBottom="70px"
     >
-      <div>Line</div>
+      <Divider
+        variant="middle"
+        sx={{
+          width: '100px',
+          height: '5px',
+          backgroundColor: 'black',
+          borderRadius: '5px',
+        }}
+      />
       <Box
         display="flex"
         justifyContent="space-evenly"
         width="95%"
         columnGap={3}
+        marginTop="50px"
         marginBottom="50px"
       >
         <CommonCard
