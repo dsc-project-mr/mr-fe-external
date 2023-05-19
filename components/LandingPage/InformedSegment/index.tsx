@@ -1,9 +1,10 @@
-import { Box, Button, Divider, TextField, Typography } from '@mui/material'
+import { Box, Button, TextField, Typography } from '@mui/material'
 import YouTubeIcon from '@mui/icons-material/YouTube'
 import TwitterIcon from '@mui/icons-material/Twitter'
 import InstagramIcon from '@mui/icons-material/Instagram'
 import FacebookIcon from '@mui/icons-material/Facebook'
 import { ChangeEvent, useState } from 'react'
+import { Line } from '../Line'
 
 interface FormValues {
   first_name: string
@@ -15,7 +16,7 @@ interface FormValues {
 
 const InformedSegment = () => {
   const imgUrl = '/images/landing/informed_segment_bg.png'
-  const [formValues, setFormValues] = useState<FormValues | {}>({})
+  const [formValues, setFormValues] = useState<FormValues | object>({})
 
   const handleTextFieldChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -53,16 +54,7 @@ const InformedSegment = () => {
         justifyContent="space-evenly"
         alignItems="center"
       >
-        <Divider
-          variant="middle"
-          sx={{
-            width: '100px',
-            height: '5px',
-            backgroundColor: 'black',
-            borderRadius: '5px',
-          }}
-        />
-
+        <Line />
         <Typography fontSize={28} fontWeight={700}>
           Subscribe to Stay Informed
         </Typography>

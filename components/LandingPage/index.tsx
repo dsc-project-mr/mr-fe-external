@@ -1,3 +1,4 @@
+import InformedSegment from './InformedSegment'
 import CampaignSegment from './CampaignSegment'
 import MainSegment from './MainSegment'
 
@@ -6,6 +7,7 @@ const LandingPage = () => {
     <>
       <MainSegment />
       <CampaignSegment />
+      <InformedSegment />
     </>
   )
 }
