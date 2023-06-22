@@ -11,9 +11,14 @@ import Chip from '@mui/material/Chip'
 
 const LastestCampaigns = () => {
   return (
-    <Box display="flex" flexDirection="column" textAlign="center">
-      <Typography variant="h3" component="h3" sx={{ fontWeight: 'bold' }}>
-        Latest Campaigns
+    <Box display="flex" flexDirection="column" textAlign="center" py="5vh">
+      <Typography
+        variant="h3"
+        component="h3"
+        sx={{ fontWeight: 'bold' }}
+        color="#009DD7"
+      >
+        LATEST CAMPAIGNS
       </Typography>
       <br />
       <Box
@@ -46,7 +51,7 @@ const LastestCampaigns = () => {
         />
       </Box>
       <Box>
-        <Button variant="contained" sx={{ mt: 4 }}>
+        <Button variant="contained" sx={{ mt: 4, backgroundColor: '#009DD7' }}>
           See More
         </Button>
       </Box>
