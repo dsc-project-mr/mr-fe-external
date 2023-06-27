@@ -74,6 +74,7 @@ const InformedSegment = () => {
                 borderRadius: '25px',
               },
             }}
+            fullWidth
           />
           <TextField
             id="outlined-search"
@@ -86,6 +87,7 @@ const InformedSegment = () => {
                 borderRadius: '25px',
               },
             }}
+            fullWidth
           />
           <TextField
             id="outlined-search"
@@ -98,6 +100,7 @@ const InformedSegment = () => {
                 borderRadius: '25px',
               },
             }}
+            fullWidth
           />
           <TextField
             id="outlined-search"
@@ -110,6 +113,7 @@ const InformedSegment = () => {
                 borderRadius: '25px',
               },
             }}
+            fullWidth
           />
         </Box>
         <Box display="flex" width="100%">
